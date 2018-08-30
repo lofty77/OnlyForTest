@@ -7,3 +7,4 @@ fix issue #6
 bbb
 rebase -> second
 b1
+b2
