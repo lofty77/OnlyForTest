@@ -6,3 +6,4 @@ here add something to fix issue 123
 fix issue #6
 bbb
 rebase -> second
+b1
