@@ -1,8 +1,6 @@
-counter = 100  # 赋值整型变量
-miles = 1000.0  # 浮点型
-name = "John"  # 字符串
+def func(x):
+    return x + 1
 
-print(counter)
-print(miles)
-print(name)
-print("hello world")
+
+def test_func():
+    assert func(3) == 5
