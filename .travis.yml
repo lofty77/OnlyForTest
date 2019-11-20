@@ -8,3 +8,5 @@ install:
 script:
 # - python test.py
   - pytest
+after_success:
+- codecov
