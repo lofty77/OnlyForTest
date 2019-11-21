@@ -8,3 +8,5 @@ install:
 script:
 # - python test.py
   - pytest  --cov=./
+after_success:
+  - codecov
