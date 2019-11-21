@@ -1,16 +1,6 @@
 from nose.tools import assert_equal
 
-
-def func1(x):
-    return x + 1
-
-
-def func2(x):
-    return x * x
-
-
-def func3(x):
-    return 2 * x
+from funcs import *
 
 
 def test_func1():
