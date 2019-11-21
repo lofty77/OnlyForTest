@@ -9,5 +9,9 @@ def func2(x):
     return x * x
 
 
-def test_func():
+def func3(x):
+    return 2 * x
+
+
+def test_func1():
     assert_equal(func1(3), 4)

@@ -9,5 +9,8 @@ script:
 # - python test.py
   - pytest  --cov=./
 after_success:
-  - codecov
+#  public repo on Travis CI
   - bash <(curl -s https://codecov.io/bash)
+
+# private repo
+# - bash <(curl -s https://codecov.io/bash) -t your-repository-upload-token
