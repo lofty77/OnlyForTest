@@ -1,24 +1,27 @@
+dist: xenial
+addons:
+  chrome: stable
+
 language: python
 python:
   - "3.6"      # current default Python on Travis CI
 # command to install dependencies
 
-addons:
-  apt:
-    packages:
-      - google-chrome-stable
+
+before_install:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
   - pip install -r requirement.txt
 # command to run tests
 
-before_script:
-- wget https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
-- unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.6/bin/
-- export CHROME_BIN=chromium-browser
+# before_script:
+# - wget https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
+# - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.6/bin/
+# - export CHROME_BIN=chromium-browser
 
 script:
-  - python main.py
+# - python main.py
 # - python test.py
   - pytest  --cov=./
 #  - pytest  --cov=./  --driver Chrome --driver-path ./chromedriver/chromedriver_linux
