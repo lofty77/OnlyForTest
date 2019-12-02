@@ -1,6 +1,7 @@
 from nose.tools import assert_equal
 from funcs import *
 import pytest
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -18,7 +19,7 @@ def test_assert_title_of_homepage():
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(chrome_options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
     driver.maximize_window()
 
     driver.get("http://automationpractice.com/index.php")
@@ -28,7 +29,7 @@ def test_assert_title_of_homepage():
     time.sleep(3)
     footer_box_link = driver.find_element_by_xpath("//ul[@class='bullet']")
     footer_link = footer_box_link.find_elements_by_tag_name("li")
-    assertEqual(4, len(footer_link))
+    assert_equal(4, len(footer_link))
 
     driver.quit()
 
