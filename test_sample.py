@@ -14,11 +14,23 @@ def test_func1():
 
 
 def test_assert_title_of_homepage():
-    chrome_options = Options()
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--headless')
-    browser = webdriver.Chrome(options=chrome_options)
-    browser.get("https://www.engagespark.com/")
-    assert browser.title == "Home - Send and Receive Automated Call and SMS Text Campaigns."
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(chrome_options=chrome_options)
+    driver.maximize_window()
+
+    driver.get("http://automationpractice.com/index.php")
+    time.sleep(3)
+    login_btn = driver.find_element_by_class_name("login")
+    login_btn.click()
+    time.sleep(3)
+    footer_box_link = driver.find_element_by_xpath("//ul[@class='bullet']")
+    footer_link = footer_box_link.find_elements_by_tag_name("li")
+    assertEqual(4, len(footer_link))
+
+    driver.quit()
 
 
 # @pytest.fixture
