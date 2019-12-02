@@ -19,7 +19,7 @@ def test_assert_title_of_homepage():
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options, executable_path="/home/travis/virtualenv/python3.6.7/bin")
     driver.maximize_window()
 
     driver.get("http://automationpractice.com/index.php")
