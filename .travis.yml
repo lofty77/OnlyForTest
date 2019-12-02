@@ -20,9 +20,8 @@ before_script:
 script:
   - python main.py
 # - python test.py
-#  - pytest  --cov=./
+  - pytest  --cov=./
 #  - pytest  --cov=./  --driver Chrome --driver-path ./chromedriver/chromedriver_linux
-  - pytest  --cov=./  --driver Chrome --driver-path /home/travis/virtualenv/python3.6/bin/chromedriver
 
 
 after_success:
