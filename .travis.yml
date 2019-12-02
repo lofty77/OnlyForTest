@@ -1,15 +1,23 @@
+dist: trusty
+addons:
+  chrome: stable
+
 language: python
 python:
   - "3.6"      # current default Python on Travis CI
 # command to install dependencies
+
+before_install:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+
 install:
   - pip install -r requirement.txt
 # command to run tests
 script:
   - python main.py
 # - python test.py
-#  - pytest  --cov=./
-  - pytest  --cov=./  --driver Chrome --driver-path ./chromedriver/chromedriver_linux
+  - pytest  --cov=./
+#  - pytest  --cov=./  --driver Chrome --driver-path ./chromedriver/chromedriver_linux
 
 after_success:
 #  public repo on Travis CI
