@@ -1,41 +1,31 @@
 sudo: required
 dist: trusty
-# addons:
-#   chrome: stable
+addons:
+  chrome: stable
 
 language: python
 python:
   - "3.6.3"      # current default Python on Travis CI
 # command to install dependencies
 
-env:
-  matrix:
-    - SELENIUM_WEBDRIVER=default
-matrix:
-  include:
-    - python: 3.6.3
-      env: SELENIUM_WEBDRIVER=default
-  fast_finish: true
-
 
 
 before_install:
   - echo $PATH
+  - mkdir /tmp/chromedriver
+  - wget https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip -O /tmp/chromedriver/chromedriver.zip
+  - unzip /tmp/chromedriver/chromedriver.zip -d /tmp/chromedriver
+  - chmod 700 /tmp/chromedriver/chromedriver
 #  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
   - pip install -r requirement.txt
-
-  - pip install -U setuptools
-  - pip install pipenv
-  - pipenv install --dev --system
 # command to run tests
 
 before_script:
-  - wget https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
-  - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.6.3/bin/
-  - export CHROME_BIN=chromium-browser
-  - python test_settings
+  - export PATH=$PATH:/tmp/chromedriver
+  - google-chrome-stable --version
+  - chromedriver --version
 
 script:
 # - python main.py
