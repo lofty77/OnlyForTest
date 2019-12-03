@@ -1,7 +1,7 @@
 sudo: required
-dist: xenial
-addons:
-  chrome: stable
+dist: trusty
+# addons:
+#   chrome: stable
 
 language: python
 python:
@@ -11,16 +11,16 @@ python:
 
 before_install:
   - echo $PATH
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+#  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
   - pip install -r requirement.txt
 # command to run tests
 
-# before_script:
-# - wget https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
-# - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.6/bin/
-# - export CHROME_BIN=chromium-browser
+before_script:
+  - wget https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.6.7/bin/
+  - export CHROME_BIN=chromium-browser
 
 script:
 # - python main.py
