@@ -5,8 +5,18 @@ dist: trusty
 
 language: python
 python:
-  - "3.6"      # current default Python on Travis CI
+  - "3.6.3"      # current default Python on Travis CI
 # command to install dependencies
+
+env:
+  matrix:
+    - SELENIUM_WEBDRIVER=default
+matrix:
+  include:
+    - python: 3.6.3
+      env: SELENIUM_WEBDRIVER=default
+  fast_finish: true
+
 
 
 before_install:
@@ -15,12 +25,17 @@ before_install:
 
 install:
   - pip install -r requirement.txt
+
+  - pip install -U setuptools
+  - pip install pipenv
+  - pipenv install --dev --system
 # command to run tests
 
 before_script:
   - wget https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.6.3/bin/
   - export CHROME_BIN=chromium-browser
+  - python --noinput --settings test_settings
 
 script:
 # - python main.py
