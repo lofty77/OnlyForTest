@@ -30,8 +30,8 @@ before_script:
 script:
 # - python main.py
 # - python test.py
-  - pytest  --cov=./
-#  - pytest  --cov=./  --driver Chrome --driver-path ./chromedriver/chromedriver_linux
+#  - pytest  --cov=./
+  - pytest  --cov=./  --driver Chrome --driver-path  /tmp/chromedriver/chromedriver
 
 
 after_success:
