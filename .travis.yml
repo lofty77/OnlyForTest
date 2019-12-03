@@ -35,7 +35,7 @@ before_script:
   - wget https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.6.3/bin/
   - export CHROME_BIN=chromium-browser
-  - python --noinput --settings test_settings
+  - python test_settings
 
 script:
 # - python main.py
